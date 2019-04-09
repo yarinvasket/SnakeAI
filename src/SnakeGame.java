@@ -43,5 +43,9 @@ public class SnakeGame implements Game {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		return (SnakeGame) super.clone();
+	}
 
 }
