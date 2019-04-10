@@ -14,12 +14,14 @@ public class SnakeGame implements Game {
 	
 	@Override
 	public void setInput(List<Float> input) {
-		
+		this.input = new ArrayList<Float>();
+		for(float e : input)
+			this.input.add(e);
 	}
 
 	@Override
 	public List<Float> getOutput() {
-		return null;
+		return input;
 	}
 
 	@Override
