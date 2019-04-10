@@ -1,11 +1,15 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class SnakeGame implements Game {
 	private Block[][] board;
 	private List<Float> input;
 	
 	public SnakeGame() {
-		
+		board = new Block[15][];
+		input = new ArrayList<Float>();
+		for(int i=0; i<board.length; i++)
+			board[i] = new Block[15];
 	}
 	
 	@Override
