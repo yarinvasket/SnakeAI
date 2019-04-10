@@ -1,7 +1,9 @@
 import java.util.List;
 
 public class SnakeGame implements Game {
-
+	private Block[][] board;
+	private List<Float> input;
+	
 	public SnakeGame() {
 		
 	}
