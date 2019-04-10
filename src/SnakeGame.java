@@ -4,18 +4,18 @@ import java.util.ArrayList;
 public class SnakeGame implements Game {
 	private Block[][] board;
 	private List<Float> input;
-	
+
 	public SnakeGame() {
 		board = new Block[15][];
 		input = new ArrayList<Float>();
-		for(int i=0; i<board.length; i++)
+		for (int i = 0; i < board.length; i++)
 			board[i] = new Block[15];
 	}
-	
+
 	@Override
 	public void setInput(List<Float> input) {
 		this.input = new ArrayList<Float>();
-		for(float e : input)
+		for (float e : input)
 			this.input.add(e);
 	}
 
@@ -36,7 +36,7 @@ public class SnakeGame implements Game {
 
 	@Override
 	public void tick() {
-		
+
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class SnakeGame implements Game {
 	public int getOutputAmount() {
 		return 0;
 	}
-	
+
 	public Object clone() throws CloneNotSupportedException {
 		return (SnakeGame) super.clone();
 	}
