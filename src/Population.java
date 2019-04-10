@@ -116,6 +116,9 @@ public class Population implements Serializable {
 						NeuralNetwork tmp = (NeuralNetwork) creatures.get(j).clone();
 						creatures.put(j, creatures.get(j + 1));
 						creatures.put(j + 1, tmp);
+						Batch tmpb = (Batch) batches.get(j).clone();
+						batches.put(j, batches.get(j + 1));
+						batches.put(j + 1, tmpb);
 					} catch (CloneNotSupportedException e) {
 						e.printStackTrace();
 					}
