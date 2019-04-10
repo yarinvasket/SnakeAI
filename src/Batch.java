@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
 
-public class Batch implements Serializable {
+public class Batch implements Serializable, Cloneable {
 	private Map<List<Integer>, List<Float>> connections;
 	private List<Float> scores;
 	private static final long serialVersionUID = 1L;
@@ -40,13 +40,17 @@ public class Batch implements Serializable {
 	}
 
 	public void addConnection(List<Integer> key, float value) {
-		if(!connections.containsKey(key))
+		if (!connections.containsKey(key))
 			connections.put(key, new ArrayList<Float>());
 		connections.get(key).add(value);
 	}
 
 	public void addScore(float score) {
 		scores.add(score);
+	}
+
+	public Object clone() throws CloneNotSupportedException {
+		return (Batch) super.clone();
 	}
 
 }
