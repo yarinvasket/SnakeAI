@@ -4,12 +4,24 @@ import java.util.ArrayList;
 public class SnakeGame implements Game {
 	private Block[][] board;
 	private List<Float> input;
+	private int xHead, yHead, xTail, yTail;
 
 	public SnakeGame() {
-		board = new Block[15][];
+		board = new Block[17][];
 		input = new ArrayList<Float>();
-		for (int i = 0; i < board.length; i++)
-			board[i] = new Block[15];
+		for (int i = 0; i < board.length; i++) {
+			board[i] = new Block[17];
+			for (int j = 0; j < board[i].length; j++)
+				if (i == 0 || j == 0 || i == 16 || j == 16)
+					board[i][j] = Block.WALL;
+				else
+					board[i][j] = Block.NA;
+		}
+		xHead = (int) (Math.random() * 15) + 1;
+		yHead = (int) (Math.random() * 15) + 1;
+		xTail = xHead;
+		yTail = yHead;
+		board[xHead][yHead] = Block.SNAKE;
 	}
 
 	@Override
