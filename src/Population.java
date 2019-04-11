@@ -84,7 +84,7 @@ public class Population implements Serializable {
 
 					if (absDiff <= latestScore / 200) {
 						creatures.get(idx).addLayer();
-						int layerNo = creatures.get(idx).getLayers().size() - 1;
+						int layerNo = creatures.get(idx).getLayers().size() - 2;
 
 						creatures.get(idx).addNeuron(layerNo);
 
