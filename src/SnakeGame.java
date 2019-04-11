@@ -1,10 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class SnakeGame implements Game {
+public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private List<Float> input;
 	private int xHead, yHead, xTail, yTail;
+	private boolean isAlive;
+	private static final long serialVersionUID = 1L;
 
 	public SnakeGame() {
 		board = new Block[17][];
@@ -19,9 +22,9 @@ public class SnakeGame implements Game {
 		}
 		xHead = (int) (Math.random() * 15) + 1;
 		yHead = (int) (Math.random() * 15) + 1;
+		board[xHead][yHead] = Block.SNAKE;
 		xTail = xHead;
 		yTail = yHead;
-		board[xHead][yHead] = Block.SNAKE;
 	}
 
 	@Override
@@ -33,7 +36,7 @@ public class SnakeGame implements Game {
 
 	@Override
 	public List<Float> getOutput() {
-		return input;
+		return null;
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class SnakeGame implements Game {
 
 	@Override
 	public boolean isAlive() {
-		return false;
+		return isAlive;
 	}
 
 	@Override
@@ -58,7 +61,7 @@ public class SnakeGame implements Game {
 
 	@Override
 	public int getOutputAmount() {
-		return 0;
+		return 3;
 	}
 
 	public Object clone() throws CloneNotSupportedException {
