@@ -24,7 +24,7 @@ public class Population implements Serializable {
 		float[] scores = new float[creatures.size()];
 		for (int i = 0; i < creatures.size(); i++)
 			scores[i] = testCreature(i);
-		scores = sort(scores);
+		sort(scores);
 
 		try {
 			for (int i = 0; i < creatures.size() / 2; i++)
@@ -55,41 +55,43 @@ public class Population implements Serializable {
 			}
 
 		for (int i = 0; i < creatures.size() / 2; i++) {
-			float latestScore = batches.get(i).getScore(batches.get(i).getScores().size() - 1);
-			float beforeLatestScore = batches.get(i).getScore(batches.get(i).getScores().size() - 2);
+			int idx = i + creatures.size() / 2;
+			float latestScore = batches.get(idx).getScore(batches.get(idx).getScores().size() - 1);
+			float beforeLatestScore = batches.get(idx).getScore(batches.get(idx).getScores().size() - 2);
 
-			for (List<Integer> key : batches.get(i).getConnections().keySet()) {
-				int size = batches.get(i).getConnections().get(key).size();
+			for (List<Integer> key : batches.get(idx).getConnections().keySet()) {
+				int size = batches.get(idx).getConnections().get(key).size();
 				if (size <= 1)
 					continue;
-				float diff = batches.get(i).getConnections().get(key).get(size - 1)
-						- batches.get(i).getConnections().get(key).get(size - 2);
+				float diff = batches.get(idx).getConnections().get(key).get(size - 1)
+						- batches.get(idx).getConnections().get(key).get(size - 2);
 				float value = diff * (latestScore - beforeLatestScore) / 2;
-				creatures.get(i).nudgeConnection(key, value);
-				batches.get(i).addConnection(key, value);
+				creatures.get(idx).nudgeConnection(key, value);
+				batches.get(idx).addConnection(key, value);
 			}
 
 			float absDiff = Math.abs(latestScore) - Math.abs(beforeLatestScore);
 			if (absDiff <= latestScore / 50) {
-				batches.get(i).addBatch(creatures.get(i).addConnectionMutation());
+				batches.get(idx).addBatch(creatures.get(idx).addConnectionMutation());
 				if (absDiff <= latestScore / 100) {
-					int layerNum = creatures.get(i).addNeuronMutation();
+					batches.get(idx).addBatch(creatures.get(idx).mutateConnections());
+					int layerNum = creatures.get(idx).addNeuronMutation();
 
-					batches.get(i).addBatch(creatures.get(i)
-							.addInConnectionMutation(creatures.get(i).getNeurons().size() - 1, layerNum));
-					batches.get(i).addBatch(creatures.get(i)
-							.addOutConnectionMutation(creatures.get(i).getNeurons().size() - 1, layerNum));
+					batches.get(idx).addBatch(creatures.get(idx)
+							.addInConnectionMutation(creatures.get(idx).getNeurons().size() - 1, layerNum));
+					batches.get(idx).addBatch(creatures.get(idx)
+							.addOutConnectionMutation(creatures.get(idx).getNeurons().size() - 1, layerNum));
 
 					if (absDiff <= latestScore / 200) {
-						creatures.get(i).addLayer();
-						int layerNo = creatures.get(i).getLayers().size() - 1;
+						creatures.get(idx).addLayer();
+						int layerNo = creatures.get(idx).getLayers().size() - 1;
 
-						creatures.get(i).addNeuron(layerNo);
+						creatures.get(idx).addNeuron(layerNo);
 
-						batches.get(i).addBatch(creatures.get(i)
-								.addInConnectionMutation(creatures.get(i).getNeurons().size() - 1, layerNo));
-						batches.get(i).addBatch(creatures.get(i)
-								.addOutConnectionMutation(creatures.get(i).getNeurons().size() - 1, layerNo));
+						batches.get(idx).addBatch(creatures.get(idx)
+								.addInConnectionMutation(creatures.get(idx).getNeurons().size() - 1, layerNo));
+						batches.get(idx).addBatch(creatures.get(idx)
+								.addOutConnectionMutation(creatures.get(idx).getNeurons().size() - 1, layerNo));
 					}
 				}
 			}
