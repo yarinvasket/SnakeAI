@@ -1,4 +1,4 @@
 
 public enum Block {
-	NA, FOOD, SNAKE;
+	NA, FOOD, SNAKE, WALL;
 }
