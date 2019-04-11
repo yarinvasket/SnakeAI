@@ -44,7 +44,7 @@ public class Population implements Serializable {
 		float[] scores = new float[creatures.size()];
 		for (int i = 0; i < creatures.size(); i++)
 			scores[i] = testCreature(i);
-		scores = sort(scores);
+		sort(scores);
 
 		for (int i = 0; i < creatures.size() / 2; i++)
 			try {
