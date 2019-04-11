@@ -68,7 +68,7 @@ public class NeuralNetwork implements Cloneable, Serializable {
 			int nextLayer = (i == layers.size() - 2) ? 2147483647 : i + 1;
 			possibleConnections += layers.get(i).size() * layers.get(nextLayer).size();
 		}
-		if (possibleConnections >= connections.size())
+		if (connections.size() >= possibleConnections)
 			return null;
 
 		int inputLayer = (int) (Math.random() * (layers.size() - 2));
