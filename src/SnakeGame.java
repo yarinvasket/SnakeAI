@@ -9,13 +9,13 @@ public class SnakeGame implements Game, Serializable {
 	private boolean isAlive;
 	private static final long serialVersionUID = 1L;
 
-	public SnakeGame() {
-		board = new Block[17][];
+	public SnakeGame(int boardSize) {
+		board = new Block[boardSize][];
 		input = new ArrayList<Float>();
 		for (int i = 0; i < board.length; i++) {
-			board[i] = new Block[17];
+			board[i] = new Block[boardSize];
 			for (int j = 0; j < board[i].length; j++)
-				if (i == 0 || j == 0 || i == 16 || j == 16)
+				if (i == 0 || j == 0 || i == boardSize - 1 || j == boardSize - 1)
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
