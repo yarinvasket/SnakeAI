@@ -128,7 +128,7 @@ public class NeuralNetwork implements Cloneable, Serializable {
 		Batch res = new Batch();
 		for (List<Integer> key : connections.keySet()) {
 			nudgeConnection(key, value);
-			res.addConnection(key, value);
+			res.addConnection(key, connections.get(key) + value);
 		}
 		return res;
 	}
