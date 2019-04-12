@@ -1,10 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.io.Serializable;
 
 public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private List<Float> input;
+	private Map<List<Integer>, Direction> directions;
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private boolean isAlive;
 	private int score;
@@ -13,6 +16,7 @@ public class SnakeGame implements Game, Serializable {
 	public SnakeGame(int boardSize) {
 		board = new Block[boardSize][];
 		input = new ArrayList<Float>();
+		directions = new HashMap<List<Integer>, Direction>();
 		for (int i = 0; i < board.length; i++) {
 			board[i] = new Block[boardSize];
 			for (int j = 0; j < board[i].length; j++)
@@ -69,7 +73,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 0;
+		return 9;
 	}
 
 	@Override
