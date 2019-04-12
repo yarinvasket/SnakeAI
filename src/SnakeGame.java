@@ -26,15 +26,19 @@ public class SnakeGame implements Game, Serializable {
 				else
 					board[i][j] = Block.NA;
 		}
-		xHead = (int) (Math.random() * 15) + 1;
-		yHead = (int) (Math.random() * 15) + 1;
-		board[xHead][yHead] = Block.SNAKE;
-		xTail = xHead;
+		xHead = 4;
+		yHead = 5;
+		for(int i=4; i<=7; i++) {
+			board[i][yHead] = Block.SNAKE;
+			List<Integer> key = new ArrayList<Integer>();
+			directions.put(key, Direction.RIGHT);
+		}
+		xTail = 2;
 		yTail = yHead;
 		generateFood();
 		isAlive = true;
 		score = 0;
-		tailLast = 4;
+		tailLast = 1;
 	}
 
 	public void generateFood() {
@@ -70,7 +74,10 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
-
+		List<Integer> key = new ArrayList<Integer>();
+		key.add(xHead);
+		key.add(yHead);
+		directions.put(key, value);
 	}
 
 	@Override
