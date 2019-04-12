@@ -11,6 +11,7 @@ public class SnakeGame implements Game, Serializable {
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private boolean isAlive;
 	private int score;
+	private int tailLast;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
@@ -32,7 +33,8 @@ public class SnakeGame implements Game, Serializable {
 		yTail = yHead;
 		generateFood();
 		isAlive = true;
-		score = 4;
+		score = 0;
+		tailLast = 4;
 	}
 
 	public void generateFood() {
