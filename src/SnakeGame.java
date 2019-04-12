@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private List<Float> input;
-	private int xHead, yHead, xTail, yTail;
+	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private boolean isAlive;
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +25,17 @@ public class SnakeGame implements Game, Serializable {
 		board[xHead][yHead] = Block.SNAKE;
 		xTail = xHead;
 		yTail = yHead;
+		generateFood();
+		isAlive = true;
+	}
+
+	public void generateFood() {
+		xFood = (int) (Math.random() * 15) + 1;
+		yFood = (int) (Math.random() * 15) + 1;
+		if (board[xFood][yFood] == Block.NA)
+			board[xFood][yFood] = Block.FOOD;
+		else
+			generateFood();
 	}
 
 	@Override
