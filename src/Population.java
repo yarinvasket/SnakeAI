@@ -27,9 +27,11 @@ public class Population implements Serializable {
 		sort(scores);
 
 		try {
-			for (int i = 0; i < creatures.size() / 2; i++)
-				creatures.put(i + creatures.size() / 2,
-						(NeuralNetwork) creatures.get((int) (i * Math.random())).clone());
+			for (int i = 0; i < creatures.size() / 2; i++) {
+				int num = (int) (i * Math.random());
+				creatures.put(i + creatures.size() / 2, (NeuralNetwork) creatures.get(num).clone());
+				batches.put(i + creatures.size() / 2, (Batch) batches.get(num).clone());
+			}
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
