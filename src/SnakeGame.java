@@ -7,6 +7,7 @@ public class SnakeGame implements Game, Serializable {
 	private List<Float> input;
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private boolean isAlive;
+	private int score;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
@@ -27,6 +28,7 @@ public class SnakeGame implements Game, Serializable {
 		yTail = yHead;
 		generateFood();
 		isAlive = true;
+		score = 4;
 	}
 
 	public void generateFood() {
@@ -52,7 +54,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public float getScore() {
-		return 0;
+		return (float) score;
 	}
 
 	@Override
