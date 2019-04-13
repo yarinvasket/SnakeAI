@@ -70,7 +70,7 @@ public class Population implements Serializable {
 						- batches.get(idx).getConnections().get(key).get(size - 2);
 				float value = diff * (latestScore - beforeLatestScore) / 2;
 				creatures.get(idx).nudgeConnection(key, value);
-				batches.get(idx).addConnection(key, value);
+				batches.get(idx).addConnection(key, creatures.get(idx).getConnections().get(key) + value);
 			}
 
 			float absDiff = Math.abs(latestScore) - Math.abs(beforeLatestScore);
