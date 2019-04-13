@@ -103,7 +103,6 @@ public class SnakeGame implements Game, Serializable {
 				value = Direction.RIGHT;
 			break;
 		default:
-			value = latestDirection;
 		}
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
