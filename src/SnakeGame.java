@@ -83,7 +83,27 @@ public class SnakeGame implements Game, Serializable {
 		Direction value = latestDirection;
 		switch (maxIdx) {
 		case 1:
+			if (latestDirection == Direction.DOWN)
+				value = Direction.RIGHT;
+			else if (latestDirection == Direction.LEFT)
+				value = Direction.DOWN;
+			else if (latestDirection == Direction.RIGHT)
+				value = Direction.UP;
+			else if (latestDirection == Direction.UP)
+				value = Direction.LEFT;
 			break;
+		case 2:
+			if (latestDirection == Direction.DOWN)
+				value = Direction.LEFT;
+			else if (latestDirection == Direction.LEFT)
+				value = Direction.UP;
+			else if (latestDirection == Direction.RIGHT)
+				value = Direction.DOWN;
+			else if (latestDirection == Direction.UP)
+				value = Direction.RIGHT;
+			break;
+		default:
+			value = latestDirection;
 		}
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
@@ -103,6 +123,10 @@ public class SnakeGame implements Game, Serializable {
 
 	public Object clone() throws CloneNotSupportedException {
 		return (SnakeGame) super.clone();
+	}
+
+	public void drawBoard() {
+		// TODO
 	}
 
 }
