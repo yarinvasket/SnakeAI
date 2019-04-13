@@ -8,6 +8,7 @@ public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private List<Float> input;
 	private Map<List<Integer>, Direction> directions;
+	private Direction latestDirection;
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private boolean isAlive;
 	private int score;
@@ -18,6 +19,7 @@ public class SnakeGame implements Game, Serializable {
 		board = new Block[boardSize][];
 		input = new ArrayList<Float>();
 		directions = new HashMap<List<Integer>, Direction>();
+		latestDirection = Direction.RIGHT;
 		for (int i = 0; i < board.length; i++) {
 			board[i] = new Block[boardSize];
 			for (int j = 0; j < board[i].length; j++)
@@ -28,7 +30,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		xHead = 4;
 		yHead = 5;
-		for(int i=4; i<=7; i++) {
+		for (int i = 4; i <= 7; i++) {
 			board[i][yHead] = Block.SNAKE;
 			List<Integer> key = new ArrayList<Integer>();
 			directions.put(key, Direction.RIGHT);
@@ -74,6 +76,15 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
+		int maxIdx = 0;
+		for (int i = 0; i < input.size(); i++)
+			if (input.get(i) > input.get(maxIdx))
+				maxIdx = i;
+		Direction value = latestDirection;
+		switch (maxIdx) {
+		case 1:
+			break;
+		}
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
 		key.add(yHead);
