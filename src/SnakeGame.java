@@ -15,7 +15,7 @@ public class SnakeGame implements Game, Serializable {
 	private List<Float> input;
 	private Map<List<Integer>, Direction> directions;
 	private Direction latestDirection;
-	private int xHead, yHead, xTail, yTail, xFood, yFood;
+	private int xHead, yHead, xTail, yTail;
 	private boolean isAlive;
 	private int score;
 	private int tailLast;
@@ -39,6 +39,8 @@ public class SnakeGame implements Game, Serializable {
 		for (int i = 4; i <= 7; i++) {
 			board[i][yHead] = Block.SNAKE;
 			List<Integer> key = new ArrayList<Integer>();
+			key.add(i);
+			key.add(yHead);
 			directions.put(key, Direction.RIGHT);
 		}
 		xTail = 2;
@@ -50,8 +52,8 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public void generateFood() {
-		xFood = (int) (Math.random() * 15) + 1;
-		yFood = (int) (Math.random() * 15) + 1;
+		int xFood = (int) (Math.random() * 15) + 1;
+		int yFood = (int) (Math.random() * 15) + 1;
 		if (board[xFood][yFood] == Block.NA)
 			board[xFood][yFood] = Block.FOOD;
 		else
@@ -82,7 +84,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
-		if (tailLast > 0) {
+		if (tailLast <= 0) {
 			board[xTail][yTail] = Block.NA;
 			List<Integer> key = new ArrayList<Integer>();
 			key.add(xTail);
@@ -132,7 +134,7 @@ public class SnakeGame implements Game, Serializable {
 		key.add(xHead);
 		key.add(yHead);
 		directions.put(key, value);
-		latestDirection = directions.get(key);
+		latestDirection = value;
 		if (latestDirection == Direction.DOWN)
 			yHead--;
 		else if (latestDirection == Direction.LEFT)
@@ -144,6 +146,7 @@ public class SnakeGame implements Game, Serializable {
 		if (board[xHead][yHead] == Block.FOOD) {
 			tailLast += 3;
 			score++;
+			generateFood();
 		} else if (board[xHead][yHead] == Block.SNAKE || board[xHead][yHead] == Block.WALL) {
 			isAlive = false;
 			drawBoard();
