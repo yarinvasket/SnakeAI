@@ -150,11 +150,12 @@ public class SnakeGame implements Game, Serializable {
 			return;
 		}
 		board[xHead][yHead] = Block.SNAKE;
+		drawBoard();
 	}
 
 	@Override
 	public int getInputAmount() {
-		return 8;
+		return 0;
 	}
 
 	@Override
@@ -167,8 +168,8 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public void drawBoard() {
-		// TODO
-		BufferedImage straight;
+		// TODO implement this with graphics on screen and not le console...
+		/*BufferedImage straight;
 		BufferedImage straightend; 
 		BufferedImage sidestraight;
 		try {
@@ -177,6 +178,19 @@ public class SnakeGame implements Game, Serializable {
 			sidestraight = ImageIO.read(getClass().getResourceAsStream("../res/sidestraight.png"));
 		} catch(IOException e) {
 			e.printStackTrace();
+		}
+		*/
+		for(Block[] x : board) {
+			for(Block y : x)
+				if(y == Block.FOOD)
+					System.out.print("&");
+				else if(y == Block.NA)
+					System.out.print(" ");
+				else if(y == Block.SNAKE)
+					System.out.println("*");
+				else
+					System.out.print("█");
+			System.out.println();
 		}
 	}
 
