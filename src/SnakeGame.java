@@ -99,15 +99,25 @@ public class SnakeGame implements Game, Serializable {
 				value = Direction.UP;
 			else if (latestDirection == Direction.RIGHT)
 				value = Direction.DOWN;
-			else if (latestDirection == Direction.UP)
+			else
 				value = Direction.RIGHT;
 			break;
 		default:
+			break;
 		}
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
 		key.add(yHead);
 		directions.put(key, value);
+		latestDirection = directions.get(key);
+		if (latestDirection == Direction.DOWN)
+			yHead--;
+		else if (latestDirection == Direction.LEFT)
+			xHead--;
+		else if (latestDirection == Direction.RIGHT)
+			xHead++;
+		else
+			yHead++;
 	}
 
 	@Override
