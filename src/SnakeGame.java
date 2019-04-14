@@ -187,7 +187,7 @@ public class SnakeGame implements Game, Serializable {
 				else if(y == Block.NA)
 					System.out.print(" ");
 				else if(y == Block.SNAKE)
-					System.out.println("*");
+					System.out.print("*");
 				else
 					System.out.print("█");
 			System.out.println();
