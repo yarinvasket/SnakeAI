@@ -135,6 +135,15 @@ public class SnakeGame implements Game, Serializable {
 			xHead++;
 		else
 			yHead++;
+		if (board[xHead][yHead] == Block.FOOD) {
+			tailLast += 3;
+			score++;
+		} else if (board[xHead][yHead] == Block.SNAKE || board[xHead][yHead] == Block.WALL) {
+			isAlive = false;
+			drawBoard();
+			return;
+		}
+		board[xHead][yHead] = Block.SNAKE;
 	}
 
 	@Override
