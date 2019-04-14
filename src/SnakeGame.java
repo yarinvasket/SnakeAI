@@ -76,6 +76,23 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
+		if (tailLast > 0) {
+			board[xTail][yTail] = Block.NA;
+			List<Integer> key = new ArrayList<Integer>();
+			key.add(xTail);
+			key.add(yTail);
+			if (directions.get(key) == Direction.DOWN)
+				yTail--;
+			else if (directions.get(key) == Direction.LEFT)
+				xTail--;
+			else if (directions.get(key) == Direction.RIGHT)
+				xTail++;
+			else
+				yTail++;
+			directions.put(key, null);
+
+		} else
+			tailLast--;
 		int maxIdx = 0;
 		for (int i = 0; i < input.size(); i++)
 			if (input.get(i) > input.get(maxIdx))
