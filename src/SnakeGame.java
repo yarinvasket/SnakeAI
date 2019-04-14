@@ -1,7 +1,13 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+
 import java.util.HashMap;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.Serializable;
 
 public class SnakeGame implements Game, Serializable {
@@ -162,6 +168,16 @@ public class SnakeGame implements Game, Serializable {
 
 	public void drawBoard() {
 		// TODO
+		BufferedImage straight;
+		BufferedImage straightend; 
+		BufferedImage sidestraight;
+		try {
+			straight = ImageIO.read(getClass().getResourceAsStream("../res/straight.png"));
+			straightend = ImageIO.read(getClass().getResourceAsStream("../res/straightend.png"));
+			sidestraight = ImageIO.read(getClass().getResourceAsStream("../res/sidestraight.png"));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
