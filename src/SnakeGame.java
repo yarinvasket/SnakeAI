@@ -102,7 +102,7 @@ public class SnakeGame implements Game, Serializable {
 		} else
 			tailLast--;
 		int maxIdx = 0;
-		for (int i = 0; i < input.size(); i++)
+		for (int i = 1; i < input.size(); i++)
 			if (input.get(i) > input.get(maxIdx))
 				maxIdx = i;
 		Direction value = latestDirection;
@@ -124,7 +124,6 @@ public class SnakeGame implements Game, Serializable {
 				value = Direction.DOWN;
 			else
 				value = Direction.RIGHT;
-		System.out.println(value);
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
 		key.add(yHead);
