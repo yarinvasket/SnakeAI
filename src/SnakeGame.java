@@ -36,7 +36,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		xHead = 4;
 		yHead = 5;
-		for (int i = 4; i <= 7; i++) {
+		for (int i = 2; i <= 4; i++) {
 			board[yHead][i] = Block.SNAKE;
 			List<Integer> key = new ArrayList<Integer>();
 			key.add(yHead);
