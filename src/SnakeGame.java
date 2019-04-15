@@ -37,10 +37,10 @@ public class SnakeGame implements Game, Serializable {
 		xHead = 4;
 		yHead = 5;
 		for (int i = 4; i <= 7; i++) {
-			board[i][yHead] = Block.SNAKE;
+			board[yHead][i] = Block.SNAKE;
 			List<Integer> key = new ArrayList<Integer>();
-			key.add(i);
 			key.add(yHead);
+			key.add(i);
 			directions.put(key, Direction.RIGHT);
 		}
 		xTail = 2;
@@ -54,8 +54,8 @@ public class SnakeGame implements Game, Serializable {
 	public void generateFood() {
 		int xFood = (int) (Math.random() * 15) + 1;
 		int yFood = (int) (Math.random() * 15) + 1;
-		if (board[xFood][yFood] == Block.NA)
-			board[xFood][yFood] = Block.FOOD;
+		if (board[yFood][xFood] == Block.NA)
+			board[yFood][xFood] = Block.FOOD;
 		else
 			generateFood();
 	}
@@ -85,10 +85,10 @@ public class SnakeGame implements Game, Serializable {
 	@Override
 	public void tick() {
 		if (tailLast <= 0) {
-			board[xTail][yTail] = Block.NA;
+			board[yTail][xTail] = Block.NA;
 			List<Integer> key = new ArrayList<Integer>();
-			key.add(xTail);
 			key.add(yTail);
+			key.add(xTail);
 			if (directions.get(key) == Direction.DOWN)
 				yTail--;
 			else if (directions.get(key) == Direction.LEFT)
@@ -125,8 +125,8 @@ public class SnakeGame implements Game, Serializable {
 			else
 				value = Direction.RIGHT;
 		List<Integer> key = new ArrayList<Integer>();
-		key.add(xHead);
 		key.add(yHead);
+		key.add(xHead);
 		directions.put(key, value);
 		latestDirection = value;
 		if (latestDirection == Direction.DOWN)
@@ -137,16 +137,16 @@ public class SnakeGame implements Game, Serializable {
 			xHead++;
 		else
 			yHead++;
-		if (board[xHead][yHead] == Block.FOOD) {
+		if (board[yHead][xHead] == Block.FOOD) {
 			tailLast += 3;
 			score++;
 			generateFood();
-		} else if (board[xHead][yHead] == Block.SNAKE || board[xHead][yHead] == Block.WALL) {
+		} else if (board[yHead][xHead] == Block.SNAKE || board[yHead][xHead] == Block.WALL) {
 			isAlive = false;
 			drawBoard();
 			return;
 		}
-		board[xHead][yHead] = Block.SNAKE;
+		board[yHead][xHead] = Block.SNAKE;
 		drawBoard();
 	}
 
