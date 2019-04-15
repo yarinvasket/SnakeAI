@@ -106,18 +106,16 @@ public class SnakeGame implements Game, Serializable {
 			if (input.get(i) > input.get(maxIdx))
 				maxIdx = i;
 		Direction value = latestDirection;
-		switch (maxIdx) {
-		case 1:
+		if (maxIdx == 1)
 			if (latestDirection == Direction.DOWN)
 				value = Direction.RIGHT;
 			else if (latestDirection == Direction.LEFT)
 				value = Direction.DOWN;
 			else if (latestDirection == Direction.RIGHT)
 				value = Direction.UP;
-			else if (latestDirection == Direction.UP)
+			else
 				value = Direction.LEFT;
-			break;
-		case 2:
+		else if (maxIdx == 2)
 			if (latestDirection == Direction.DOWN)
 				value = Direction.LEFT;
 			else if (latestDirection == Direction.LEFT)
@@ -126,10 +124,7 @@ public class SnakeGame implements Game, Serializable {
 				value = Direction.DOWN;
 			else
 				value = Direction.RIGHT;
-			break;
-		default:
-			break;
-		}
+		System.out.println(value);
 		List<Integer> key = new ArrayList<Integer>();
 		key.add(xHead);
 		key.add(yHead);
@@ -172,24 +167,23 @@ public class SnakeGame implements Game, Serializable {
 
 	public void drawBoard() {
 		// TODO implement this with graphics on screen and not le console...
-		/*BufferedImage straight;
-		BufferedImage straightend; 
-		BufferedImage sidestraight;
-		try {
-			straight = ImageIO.read(getClass().getResourceAsStream("../res/straight.png"));
-			straightend = ImageIO.read(getClass().getResourceAsStream("../res/straightend.png"));
-			sidestraight = ImageIO.read(getClass().getResourceAsStream("../res/sidestraight.png"));
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		*/
-		for(Block[] x : board) {
-			for(Block y : x)
-				if(y == Block.FOOD)
+		/*
+		 * BufferedImage straight; BufferedImage straightend; BufferedImage
+		 * sidestraight; try { straight =
+		 * ImageIO.read(getClass().getResourceAsStream("../res/straight.png"));
+		 * straightend =
+		 * ImageIO.read(getClass().getResourceAsStream("../res/straightend.png"));
+		 * sidestraight =
+		 * ImageIO.read(getClass().getResourceAsStream("../res/sidestraight.png")); }
+		 * catch(IOException e) { e.printStackTrace(); }
+		 */
+		for (Block[] x : board) {
+			for (Block y : x)
+				if (y == Block.FOOD)
 					System.out.print("&");
-				else if(y == Block.NA)
+				else if (y == Block.NA)
 					System.out.print(" ");
-				else if(y == Block.SNAKE)
+				else if (y == Block.SNAKE)
 					System.out.print("*");
 				else
 					System.out.print("█");
