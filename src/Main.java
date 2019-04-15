@@ -10,7 +10,7 @@ public class Main {
 		System.out.println("File path: ");
 		String filePath = scanner.nextLine();
 		scanner.close();
-		Population population = null;
+		Population population;
 		if (ans.compareToIgnoreCase("y") == 0)
 			population = (Population) ObjectIO.readObjFromFile(filePath);
 		else
