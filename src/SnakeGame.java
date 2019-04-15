@@ -84,7 +84,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
-		if (tailLast <= 0) {
+		if (true) {
 			board[yTail][xTail] = Block.NA;
 			List<Integer> key = new ArrayList<Integer>();
 			key.add(yTail);
@@ -105,6 +105,7 @@ public class SnakeGame implements Game, Serializable {
 		for (int i = 1; i < input.size(); i++)
 			if (input.get(i) > input.get(maxIdx))
 				maxIdx = i;
+		maxIdx = 1;
 		Direction value = latestDirection;
 		if (maxIdx == 1)
 			if (latestDirection == Direction.DOWN)
