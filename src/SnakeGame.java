@@ -7,8 +7,14 @@ public class SnakeGame implements Game, Serializable {
 
 	public SnakeGame(int boardSize) {
 		board = new Block[boardSize][];
-		for(int i = 0; i<boardSize; i++)
+		for (int i = 0; i < boardSize; i++)
 			board[i] = new Block[boardSize];
+		for (int i = 0; i < boardSize; i++)
+			for (int j = 0; j < boardSize; j++)
+				if (i == 0 || j == 0 || i == boardSize - 1 || j == boardSize - 1)
+					board[i][j] = Block.WALL;
+				else
+					board[i][j] = Block.NA;
 	}
 
 	@Override
