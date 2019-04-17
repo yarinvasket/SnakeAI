@@ -2,10 +2,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public class SnakeGame implements Game, Serializable {
+	private Block[][] board;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
-
+		board = new Block[boardSize][];
+		for(int i = 0; i<boardSize; i++)
+			board[i] = new Block[boardSize];
 	}
 
 	@Override
