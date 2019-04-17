@@ -8,6 +8,7 @@ public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private Map<List<Integer>, Direction> directions;
 	private List<Float> input;
+	private int xHead, yHead, xTail, yTail;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
@@ -20,6 +21,14 @@ public class SnakeGame implements Game, Serializable {
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
+		
+		xHead = 4;
+		yHead = 5;
+		xTail = xHead - 2;
+		yTail = yHead;
+		for(int x=2; x<=4; x++) {
+			
+		}
 
 		directions = new HashMap<List<Integer>, Direction>();
 	}
@@ -33,19 +42,16 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public List<Float> getOutput() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public float getScore() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -57,14 +63,12 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getOutputAmount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 	public Object clone() throws CloneNotSupportedException {
