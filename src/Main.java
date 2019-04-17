@@ -14,7 +14,7 @@ public class Main {
 		if (ans.compareToIgnoreCase("y") == 0)
 			population = (Population) ObjectIO.readObjFromFile(filePath);
 		else
-			population = new Population(1000, snakeGame, filePath);
+			population = new Population(1000, snakeGame);
 		while (true)
 			population.killMutate();
 	}
