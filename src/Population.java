@@ -7,14 +7,12 @@ public class Population implements Serializable {
 	private Map<Integer, NeuralNetwork> creatures;
 	private Map<Integer, Batch> batches;
 	private Game game;
-	String filePath;
 	private static final long serialVersionUID = 1L;
 
-	public Population(int popSize, Game game, String filePath) {
+	public Population(int popSize, Game game) {
 		creatures = new HashMap<Integer, NeuralNetwork>();
 		batches = new HashMap<Integer, Batch>();
 		this.game = game;
-		this.filePath = filePath;
 
 		for (int i = 0; i < popSize; i++) {
 			creatures.put(i, new NeuralNetwork(game.getInputAmount(), game.getOutputAmount()));
@@ -38,8 +36,6 @@ public class Population implements Serializable {
 
 		for (int i = 0; i < creatures.size() / 2; i++)
 			batches.get(i + creatures.size() / 2).addBatch(creatures.get(i + creatures.size() / 2).mutateConnections());
-
-		ObjectIO.writeObjToFile(this, filePath);
 	}
 
 	public void killMutate() {
@@ -99,8 +95,6 @@ public class Population implements Serializable {
 				}
 			}
 		}
-
-		ObjectIO.writeObjToFile(this, filePath);
 	}
 
 	public float[] sort(float[] arr) {
