@@ -1,8 +1,13 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
+	private Map<List<Integer>, Direction> directions;
+	private List<Float> input;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
@@ -15,12 +20,15 @@ public class SnakeGame implements Game, Serializable {
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
+
+		directions = new HashMap<List<Integer>, Direction>();
 	}
 
 	@Override
 	public void setInput(List<Float> input) {
-		// TODO Auto-generated method stub
-
+		input = new ArrayList<Float>();
+		for(float e : input)
+			this.input.add(e);
 	}
 
 	@Override
