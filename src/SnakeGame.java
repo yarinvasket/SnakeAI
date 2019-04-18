@@ -73,7 +73,6 @@ public class SnakeGame implements Game, Serializable {
 			List<Integer> key = new ArrayList<Integer>();
 			key.add(yTail);
 			key.add(xTail);
-
 			Direction tailDirection = directions.get(key);
 			if (tailDirection == Direction.DOWN)
 				yTail--;
@@ -83,6 +82,7 @@ public class SnakeGame implements Game, Serializable {
 				xTail++;
 			else
 				yTail++;
+			directions.put(key, null);
 		} else {
 			tailLast--;
 			score++;
