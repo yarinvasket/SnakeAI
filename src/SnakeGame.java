@@ -62,7 +62,6 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -75,15 +74,15 @@ public class SnakeGame implements Game, Serializable {
 	public int getOutputAmount() {
 		return 3;
 	}
-	
+
 	public void drawBoard() {
-		for(Block[] y : board)
-			for(Block x : y)
-				if(x == Block.NA)
+		for (Block[] y : board)
+			for (Block x : y)
+				if (x == Block.NA)
 					System.out.print(" ");
-				else if(x == Block.WALL)
+				else if (x == Block.WALL)
 					System.out.print("█");
-				else if(x == Block.SNAKE)
+				else if (x == Block.SNAKE)
 					System.out.print("*");
 				else
 					System.out.print("&");
