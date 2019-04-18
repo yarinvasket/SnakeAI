@@ -21,22 +21,27 @@ public class SnakeGame implements Game, Serializable {
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
-		
+
 		xHead = 4;
 		yHead = 5;
 		xTail = xHead - 2;
 		yTail = yHead;
-		for(int x=2; x<=4; x++) {
-			
-		}
-
 		directions = new HashMap<List<Integer>, Direction>();
+		for (int x = 2; x <= 4; x++) {
+			board[yHead][x] = Block.SNAKE;
+			if (x < 4) {
+				List<Integer> key = new ArrayList<Integer>();
+				key.add(yHead);
+				key.add(x);
+				directions.put(key, Direction.RIGHT);
+			}
+		}
 	}
 
 	@Override
 	public void setInput(List<Float> input) {
 		input = new ArrayList<Float>();
-		for(float e : input)
+		for (float e : input)
 			this.input.add(e);
 	}
 
