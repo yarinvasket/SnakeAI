@@ -9,6 +9,9 @@ public class SnakeGame implements Game, Serializable {
 	private Map<List<Integer>, Direction> directions;
 	private List<Float> input;
 	private int xHead, yHead, xTail, yTail;
+	private int score;
+	private int tailLast;
+	private boolean isAlive;
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame(int boardSize) {
@@ -36,6 +39,9 @@ public class SnakeGame implements Game, Serializable {
 				directions.put(key, Direction.RIGHT);
 			}
 		}
+		score = 3;
+		tailLast = 0;
+		isAlive = true;
 	}
 
 	@Override
@@ -52,12 +58,12 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public float getScore() {
-		return 0;
+		return score;
 	}
 
 	@Override
 	public boolean isAlive() {
-		return false;
+		return isAlive;
 	}
 
 	@Override
@@ -76,7 +82,7 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public void drawBoard() {
-		for (Block[] y : board)
+		for (Block[] y : board) {
 			for (Block x : y)
 				if (x == Block.NA)
 					System.out.print(" ");
@@ -86,6 +92,8 @@ public class SnakeGame implements Game, Serializable {
 					System.out.print("*");
 				else
 					System.out.print("&");
+			System.out.println();
+		}
 	}
 
 	public Object clone() throws CloneNotSupportedException {
