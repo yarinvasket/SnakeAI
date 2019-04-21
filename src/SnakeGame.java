@@ -9,7 +9,7 @@ public class SnakeGame implements Game, Serializable {
 	private Map<List<Integer>, Direction> directions;
 	private List<Float> input;
 	private Direction latestDirection;
-	private int xHead, yHead, xTail, yTail;
+	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private int score;
 	private int tailLast;
 	private boolean isAlive;
@@ -30,6 +30,7 @@ public class SnakeGame implements Game, Serializable {
 		yHead = 5;
 		xTail = xHead - 2;
 		yTail = yHead;
+		generateFood();
 		directions = new HashMap<List<Integer>, Direction>();
 		for (int x = 2; x <= 4; x++) {
 			board[yHead][x] = Block.SNAKE;
@@ -202,8 +203,8 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public void generateFood() {
-		int xFood = (int) (Math.random() * 16);
-		int yFood = (int) (Math.random() * 16);
+		xFood = (int) (Math.random() * 16);
+		yFood = (int) (Math.random() * 16);
 		if (board[yFood][xFood] == Block.NA)
 			board[yFood][xFood] = Block.FOOD;
 		else
