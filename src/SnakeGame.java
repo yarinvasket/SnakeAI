@@ -97,12 +97,12 @@ public class SnakeGame implements Game, Serializable {
 		switch (maxIdx) {
 		case 1:
 			if (latestDirection == Direction.DOWN) {
-				xHead++;
-				latestDirection = Direction.RIGHT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.RIGHT);
+				xHead++;
+				latestDirection = Direction.RIGHT;
 			} else if (latestDirection == Direction.LEFT) {
 				yHead++;
 				latestDirection = Direction.DOWN;
@@ -184,6 +184,10 @@ public class SnakeGame implements Game, Serializable {
 				directions.put(key, Direction.DOWN);
 			}
 			break;
+		}
+		
+		if(board[yHead][xHead] == Block.NA) {
+			board[yHead][xHead] = Block.SNAKE;
 		}
 	}
 
