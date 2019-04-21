@@ -89,38 +89,35 @@ public class SnakeGame implements Game, Serializable {
 			tailLast--;
 			score++;
 		}
-		
+
 		int maxIdx = 0;
-		for(int i = 1; i < input.size(); i++)
-			if(input.get(i) > input.get(maxIdx))
+		for (int i = 1; i < input.size(); i++)
+			if (input.get(i) > input.get(maxIdx))
 				maxIdx = i;
-		switch(maxIdx) {
+		switch (maxIdx) {
 		case 1:
-			if(latestDirection == Direction.DOWN) {
+			if (latestDirection == Direction.DOWN) {
 				xHead++;
 				latestDirection = Direction.RIGHT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.RIGHT);
-			}
-			else if(latestDirection == Direction.LEFT) {
+			} else if (latestDirection == Direction.LEFT) {
 				yHead++;
 				latestDirection = Direction.DOWN;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
-			}
-			else if(latestDirection == Direction.RIGHT) {
+			} else if (latestDirection == Direction.RIGHT) {
 				yHead--;
 				latestDirection = Direction.UP;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.UP);
-			}
-			else {
+			} else {
 				xHead--;
 				latestDirection = Direction.LEFT;
 				List<Integer> key = new ArrayList<Integer>();
@@ -129,32 +126,29 @@ public class SnakeGame implements Game, Serializable {
 				directions.put(key, Direction.LEFT);
 			}
 			break;
-		case 2: 
-			if(latestDirection == Direction.DOWN) {
+		case 2:
+			if (latestDirection == Direction.DOWN) {
 				xHead--;
 				latestDirection = Direction.LEFT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.LEFT);
-			}
-			else if(latestDirection == Direction.LEFT) {
+			} else if (latestDirection == Direction.LEFT) {
 				yHead--;
 				latestDirection = Direction.UP;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.UP);
-			}
-			else if(latestDirection == Direction.RIGHT) {
+			} else if (latestDirection == Direction.RIGHT) {
 				yHead++;
 				latestDirection = Direction.DOWN;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
-			}
-			else {
+			} else {
 				xHead++;
 				latestDirection = Direction.RIGHT;
 				List<Integer> key = new ArrayList<Integer>();
@@ -164,12 +158,30 @@ public class SnakeGame implements Game, Serializable {
 			}
 			break;
 		default:
-			if(latestDirection == Direction.DOWN) {
+			if (latestDirection == Direction.DOWN) {
 				yHead++;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
+				directions.put(key, Direction.DOWN);
+			} else if (latestDirection == Direction.LEFT) {
+				xHead--;
+				List<Integer> key = new ArrayList<Integer>();
+				key.add(yHead);
+				key.add(xHead);
+				directions.put(key, Direction.LEFT);
+			} else if (latestDirection == Direction.RIGHT) {
+				xHead++;
+				List<Integer> key = new ArrayList<Integer>();
+				key.add(yHead);
+				key.add(xHead);
 				directions.put(key, Direction.RIGHT);
+			} else {
+				yHead--;
+				List<Integer> key = new ArrayList<Integer>();
+				key.add(yHead);
+				key.add(xHead);
+				directions.put(key, Direction.DOWN);
 			}
 			break;
 		}
