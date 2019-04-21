@@ -201,6 +201,15 @@ public class SnakeGame implements Game, Serializable {
 		drawBoard();
 	}
 
+	public void generateFood() {
+		int xFood = (int) (Math.random() * 16);
+		int yFood = (int) (Math.random() * 16);
+		if (board[yFood][xFood] == Block.NA)
+			board[yFood][xFood] = Block.FOOD;
+		else
+			generateFood();
+	}
+
 	@Override
 	public int getInputAmount() {
 		return 0;
