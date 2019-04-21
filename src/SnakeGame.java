@@ -104,84 +104,84 @@ public class SnakeGame implements Game, Serializable {
 				xHead++;
 				latestDirection = Direction.RIGHT;
 			} else if (latestDirection == Direction.LEFT) {
-				yHead++;
-				latestDirection = Direction.DOWN;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
+				yHead++;
+				latestDirection = Direction.DOWN;
 			} else if (latestDirection == Direction.RIGHT) {
-				yHead--;
-				latestDirection = Direction.UP;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.UP);
+				yHead--;
+				latestDirection = Direction.UP;
 			} else {
-				xHead--;
-				latestDirection = Direction.LEFT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.LEFT);
+				xHead--;
+				latestDirection = Direction.LEFT;
 			}
 			break;
 		case 2:
 			if (latestDirection == Direction.DOWN) {
-				xHead--;
-				latestDirection = Direction.LEFT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.LEFT);
+				xHead--;
+				latestDirection = Direction.LEFT;
 			} else if (latestDirection == Direction.LEFT) {
-				yHead--;
-				latestDirection = Direction.UP;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.UP);
+				yHead--;
+				latestDirection = Direction.UP;
 			} else if (latestDirection == Direction.RIGHT) {
-				yHead++;
-				latestDirection = Direction.DOWN;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
+				yHead++;
+				latestDirection = Direction.DOWN;
 			} else {
-				xHead++;
-				latestDirection = Direction.RIGHT;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.RIGHT);
+				xHead++;
+				latestDirection = Direction.RIGHT;
 			}
 			break;
 		default:
 			if (latestDirection == Direction.DOWN) {
-				yHead++;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
+				yHead++;
 			} else if (latestDirection == Direction.LEFT) {
-				xHead--;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.LEFT);
+				xHead--;
 			} else if (latestDirection == Direction.RIGHT) {
-				xHead++;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.RIGHT);
+				xHead++;
 			} else {
-				yHead--;
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
 				directions.put(key, Direction.DOWN);
+				yHead--;
 			}
 			break;
 		}
