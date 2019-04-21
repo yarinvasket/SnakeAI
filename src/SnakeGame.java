@@ -48,7 +48,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void setInput(List<Float> input) {
-		input = new ArrayList<Float>();
+		this.input = new ArrayList<Float>();
 		for (float e : input)
 			this.input.add(e);
 	}
