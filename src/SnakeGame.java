@@ -182,7 +182,7 @@ public class SnakeGame implements Game, Serializable {
 				List<Integer> key = new ArrayList<Integer>();
 				key.add(yHead);
 				key.add(xHead);
-				directions.put(key, Direction.DOWN);
+				directions.put(key, Direction.UP);
 				yHead--;
 			}
 			break;
