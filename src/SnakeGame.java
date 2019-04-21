@@ -188,9 +188,9 @@ public class SnakeGame implements Game, Serializable {
 			break;
 		}
 
-		if (board[yHead][xHead] == Block.NA) {
+		if (board[yHead][xHead] == Block.NA)
 			board[yHead][xHead] = Block.SNAKE;
-		} else if (board[yHead][xHead] == Block.WALL || board[yHead][xHead] == Block.SNAKE) {
+		else if (board[yHead][xHead] == Block.WALL || board[yHead][xHead] == Block.SNAKE) {
 			isAlive = false;
 			drawBoard();
 			return;
