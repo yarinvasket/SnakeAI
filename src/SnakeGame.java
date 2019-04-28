@@ -233,6 +233,15 @@ public class SnakeGame implements Game, Serializable {
 					System.out.print("&");
 			System.out.println();
 		}
+		for (int i = 0; i < 17; i++) {
+			for (int j = 0; j < 17; j++) {
+				List<Integer> key = new ArrayList<Integer>();
+				key.add(j);
+				key.add(i);
+				System.out.print(directions.get(key));
+			}
+			System.out.println();
+		}
 	}
 
 	public Object clone() throws CloneNotSupportedException {
