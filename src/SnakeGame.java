@@ -237,8 +237,8 @@ public class SnakeGame implements Game, Serializable {
 		for (int i = 0; i < 17; i++) {
 			for (int j = 0; j < 17; j++) {
 				List<Integer> key = new ArrayList<Integer>();
-				key.add(j);
 				key.add(i);
+				key.add(j);
 				System.out.print(directions.get(key));
 			}
 			System.out.println();
