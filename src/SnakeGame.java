@@ -186,10 +186,10 @@ public class SnakeGame implements Game, Serializable {
 			}
 			break;
 		}
-		System.out.println(yHead + " " + xHead);
 
-		if (board[yHead][xHead] == Block.NA)
+		if (board[yHead][xHead] == Block.NA) {
 			board[yHead][xHead] = Block.SNAKE;
+		}
 		else if (yHead == 0 || yHead == 16 || xHead == 0 || xHead == 16 || board[yHead][xHead] == Block.SNAKE) {
 			isAlive = false;
 			drawBoard();
@@ -232,15 +232,6 @@ public class SnakeGame implements Game, Serializable {
 					System.out.print("*");
 				else
 					System.out.print("&");
-			System.out.println();
-		}
-		for (int i = 0; i < 17; i++) {
-			for (int j = 0; j < 17; j++) {
-				List<Integer> key = new ArrayList<Integer>();
-				key.add(i);
-				key.add(j);
-				System.out.print(directions.get(key));
-			}
 			System.out.println();
 		}
 	}
