@@ -66,6 +66,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public boolean isAlive() {
+		System.out.println(isAlive);
 		return isAlive;
 	}
 
@@ -187,9 +188,8 @@ public class SnakeGame implements Game, Serializable {
 			break;
 		}
 
-		if (board[yHead][xHead] == Block.NA) {
+		if (board[yHead][xHead] == Block.NA)
 			board[yHead][xHead] = Block.SNAKE;
-		}
 		else if (yHead == 0 || yHead == 16 || xHead == 0 || xHead == 16 || board[yHead][xHead] == Block.SNAKE) {
 			isAlive = false;
 			drawBoard();
