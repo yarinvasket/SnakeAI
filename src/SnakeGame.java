@@ -66,7 +66,6 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public boolean isAlive() {
-		System.out.println(isAlive);
 		return isAlive;
 	}
 
