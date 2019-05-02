@@ -53,11 +53,10 @@ public class NeuralNetwork implements Cloneable, Serializable {
 					neuronsState.put(k, curr + neurons.get(j).getData() * connections.get(key));
 				}
 			}
-			for (int j : activeNeurons.keySet()) {
-				for (int k : neurons.get(j).getConnections()) {
-					neurons.get(k).sigma(neuronsState.get(k));
-				}
-			}
+			for (int j : activeNeurons.keySet())
+				for (int k : neurons.get(j).getConnections())
+					if (neuronsState.containsKey(k))
+						neurons.get(k).sigma(neuronsState.get(k));
 			activeNeurons = afterNeurons;
 		}
 		for (int j : layers.get(2147483647))
