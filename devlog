@@ -1,3 +1,0 @@
-So, it turns out that the clone method in SnakeGame is not actually cloning the object.
-This bug took me so long to figure out, it cost weeks of confusion and askdjat....
-I officially hate java now
