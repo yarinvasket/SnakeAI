@@ -236,7 +236,8 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public Object clone() throws CloneNotSupportedException {
-		return (SnakeGame) super.clone();
+		//since clone is broken I'm returning a fresh object from the constructor
+		return new SnakeGame(17);
 	}
 
 }
