@@ -95,7 +95,7 @@ public class SnakeGame implements Game, Serializable {
 		for (int i = 1; i < input.size(); i++)
 			if (input.get(i) > input.get(maxIdx))
 				maxIdx = i;
-		switch (0) {
+		switch (maxIdx) {
 		case 1:
 			if (latestDirection == Direction.DOWN) {
 				List<Integer> key = new ArrayList<Integer>();
