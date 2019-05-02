@@ -21,7 +21,7 @@ public class SnakeGame implements Game, Serializable {
 			board[i] = new Block[17];
 		for (int i = 0; i < 17; i++)
 			for (int j = 0; j < 17; j++)
-				if (i == 0 || j == 0 || i == 17 - 1 || j == 17 - 1)
+				if (i == 0 || j == 0 || i == 16 || j == 16)
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
