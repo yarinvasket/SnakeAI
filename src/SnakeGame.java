@@ -12,6 +12,7 @@ public class SnakeGame implements Game, Serializable {
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private int score;
 	private int tailLast;
+	private int hunger;
 	private boolean isAlive;
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +44,8 @@ public class SnakeGame implements Game, Serializable {
 		}
 		latestDirection = Direction.RIGHT;
 		score = 3;
-		tailLast = 2;
+		tailLast = 1;
+		hunger = 20;
 		isAlive = true;
 	}
 
@@ -198,8 +200,10 @@ public class SnakeGame implements Game, Serializable {
 			break;
 		}
 
-		if (board[yHead][xHead] == Block.NA)
+		if (board[yHead][xHead] == Block.NA) {
 			board[yHead][xHead] = Block.SNAKE;
+			hunger--;
+		}
 		else if (yHead == 0 || yHead == 16 || xHead == 0 || xHead == 16 || board[yHead][xHead] == Block.SNAKE) {
 			isAlive = false;
 			drawBoard();
@@ -207,6 +211,7 @@ public class SnakeGame implements Game, Serializable {
 		} else {
 			tailLast += 3;
 			board[yHead][xHead] = Block.SNAKE;
+			hunger = 20;
 			generateFood();
 		}
 		drawBoard();
