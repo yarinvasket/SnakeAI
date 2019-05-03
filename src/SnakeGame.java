@@ -57,10 +57,16 @@ public class SnakeGame implements Game, Serializable {
 	@Override
 	public List<Float> getOutput() {
 		List<Float> output = new ArrayList<Float>();
+		int yDifference = yHead - yFood;
+		int xDifference = xHead - xFood;
 		float firstNeuron;
-		if (latestDirection == Direction.DOWN) {
+		if (yDifference == 0)
+			firstNeuron = (float) Math.PI / 2;
+		else if (xDifference == 0)
+			firstNeuron = 0;
+		else
 			firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
-		}
+		output.add(firstNeuron);
 		return output;
 	}
 
@@ -217,7 +223,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 8;
+		return 1;
 	}
 
 	@Override
@@ -241,7 +247,7 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public Object clone() throws CloneNotSupportedException {
-		//since clone is broken I'm returning a fresh object from the constructor
+		// since clone is broken I'm returning a fresh object from the constructor
 		return new SnakeGame();
 	}
 
