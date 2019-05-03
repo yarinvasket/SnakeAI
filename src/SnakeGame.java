@@ -212,7 +212,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 0;
+		return 8;
 	}
 
 	@Override
