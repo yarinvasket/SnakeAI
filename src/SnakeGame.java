@@ -56,7 +56,12 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public List<Float> getOutput() {
-		return null;
+		List<Float> output = new ArrayList<Float>();
+		float firstNeuron;
+		if (latestDirection == Direction.DOWN) {
+			firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
+		}
+		return output;
 	}
 
 	@Override
