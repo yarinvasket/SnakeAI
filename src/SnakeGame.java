@@ -59,6 +59,7 @@ public class SnakeGame implements Game, Serializable {
 	@Override
 	public List<Float> getOutput() {
 		List<Float> output = new ArrayList<Float>();
+
 		int yDifference = yHead - yFood;
 		int xDifference = xHead - xFood;
 		float firstNeuron;
@@ -67,7 +68,10 @@ public class SnakeGame implements Game, Serializable {
 		else if (xDifference == 0)
 			firstNeuron = 0;
 		else
-			firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
+			if (latestDirection == Direction.UP)
+				firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
+			else if (latestDirection == Direction.DOWN)
+				firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
 		output.add(firstNeuron);
 		return output;
 	}
