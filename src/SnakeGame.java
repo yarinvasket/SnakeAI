@@ -86,6 +86,8 @@ public class SnakeGame implements Game, Serializable {
 			firstNeuron = (float) Math.atan((yDifference) / (xDifference));
 
 		output.add(firstNeuron);
+		System.out.println(latestDirection);
+		System.out.println(firstNeuron);
 		return output;
 	}
 
