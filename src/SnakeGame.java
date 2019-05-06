@@ -44,7 +44,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		latestDirection = Direction.RIGHT;
 		score = 3;
-		tailLast = 1;
+		tailLast = 2;
 		hunger = 20;
 		isAlive = true;
 	}
