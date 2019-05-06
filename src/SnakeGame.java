@@ -62,7 +62,7 @@ public class SnakeGame implements Game, Serializable {
 
 		int yDifference;
 		int xDifference;
-		
+
 		if (latestDirection == Direction.UP) {
 			yDifference = yHead - yFood;
 			xDifference = xFood - xHead;
@@ -76,7 +76,7 @@ public class SnakeGame implements Game, Serializable {
 			yDifference = xFood - xHead;
 			xDifference = yHead - yFood;
 		}
-		
+
 		float firstNeuron;
 		if (yDifference == 0)
 			firstNeuron = (float) Math.PI / 2;
