@@ -67,11 +67,8 @@ public class SnakeGame implements Game, Serializable {
 			firstNeuron = (float) Math.PI / 2;
 		else if (xDifference == 0)
 			firstNeuron = 0;
-		else
-			if (latestDirection == Direction.UP)
-				firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
-			else if (latestDirection == Direction.DOWN)
-				firstNeuron = (float) Math.atan((yHead - yFood) / (xHead - xFood));
+		else if (latestDirection == Direction.UP)
+			firstNeuron = (float) Math.atan((yDifference) / (xDifference));
 		output.add(firstNeuron);
 		return output;
 	}
