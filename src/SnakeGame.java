@@ -60,8 +60,23 @@ public class SnakeGame implements Game, Serializable {
 	public List<Float> getOutput() {
 		List<Float> output = new ArrayList<Float>();
 
-		int yDifference = yHead - yFood;
-		int xDifference = xHead - xFood;
+		int yDifference;
+		int xDifference;
+		
+		if (latestDirection == Direction.UP) {
+			yDifference = yHead - yFood;
+			xDifference = xFood - xHead;
+		} else if (latestDirection == Direction.DOWN) {
+			yDifference = yFood - yHead;
+			xDifference = xHead - xFood;
+		} else if (latestDirection == Direction.LEFT) {
+			yDifference = xHead - xFood;
+			xDifference = yFood - yHead;
+		} else {
+			yDifference = xFood - xHead;
+			xDifference = yHead - yFood;
+		}
+		
 		float firstNeuron;
 		if (yDifference == 0)
 			firstNeuron = (float) Math.PI / 2;
