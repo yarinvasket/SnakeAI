@@ -127,9 +127,9 @@ public class NeuralNetwork implements Cloneable, Serializable {
 	}
 
 	public Batch mutateConnections() {
-		float value = (float) Math.random() * 2 - 1;
 		Batch res = new Batch();
 		for (List<Integer> key : connections.keySet()) {
+			float value = (float) Math.random() * 2 - 1;
 			nudgeConnection(key, value);
 			res.addConnection(key, connections.get(key) + value);
 		}
