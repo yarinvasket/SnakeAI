@@ -17,12 +17,12 @@ public class SnakeGame implements Game, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public SnakeGame() {
-		board = new Block[15][];
-		for (int i = 0; i < 15; i++)
-			board[i] = new Block[15];
-		for (int i = 0; i < 15; i++)
-			for (int j = 0; j < 15; j++)
-				if (i == 0 || j == 0 || i == 14 || j == 14)
+		board = new Block[13][];
+		for (int i = 0; i < 13; i++)
+			board[i] = new Block[13];
+		for (int i = 0; i < 13; i++)
+			for (int j = 0; j < 13; j++)
+				if (i == 0 || j == 0 || i == 12 || j == 12)
 					board[i][j] = Block.WALL;
 				else
 					board[i][j] = Block.NA;
@@ -229,8 +229,8 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public void generateFood() {
-		xFood = (int) (Math.random() * 13) + 1;
-		yFood = (int) (Math.random() * 13) + 1;
+		xFood = (int) (Math.random() * 11) + 1;
+		yFood = (int) (Math.random() * 11) + 1;
 		if (board[yFood][xFood] == Block.NA)
 			board[yFood][xFood] = Block.FOOD;
 		else
