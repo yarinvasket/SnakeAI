@@ -65,16 +65,16 @@ public class SnakeGame implements Game, Serializable {
 
 		if (latestDirection == Direction.UP) {
 			yDifference = yHead - yFood;
-			xDifference = xFood - xHead;
+			xDifference = xHead - xFood;
 		} else if (latestDirection == Direction.DOWN) {
 			yDifference = yFood - yHead;
-			xDifference = xHead - xFood;
+			xDifference = xFood - xHead;
 		} else if (latestDirection == Direction.LEFT) {
 			yDifference = xHead - xFood;
-			xDifference = yFood - yHead;
+			xDifference = yHead - yFood;
 		} else {
 			yDifference = xFood - xHead;
-			xDifference = yHead - yFood;
+			xDifference = yFood - yHead;
 		}
 
 		float firstNeuron = (float) Math.atan2(yDifference, xDifference);
