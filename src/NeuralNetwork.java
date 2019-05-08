@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.io.Serializable;
 
-public class NeuralNetwork implements Cloneable, Serializable {
+public class NeuralNetwork implements Serializable {
 	private Map<Integer, Neuron> neurons;
 	private Map<List<Integer>, Float> connections;
 	private Map<Integer, List<Integer>> layers;
@@ -25,6 +25,14 @@ public class NeuralNetwork implements Cloneable, Serializable {
 
 		for (int i = 0; i < outputAmount; i++)
 			addNeuron(2147483647);
+	}
+
+	public NeuralNetwork(Map<Integer, Neuron> neurons, Map<List<Integer>, Float> connections,
+			Map<Integer, List<Integer>> layers, Map<Integer, Boolean> activeNeurons) {
+		this.neurons = neurons;
+		this.connections = connections;
+		this.layers = layers;
+		this.activeNeurons = activeNeurons;
 	}
 
 	public List<Float> feedForward(List<Float> input) {
@@ -177,7 +185,7 @@ public class NeuralNetwork implements Cloneable, Serializable {
 		connections.put(key, connections.get(key) + value);
 	}
 
-	public Object clone() throws CloneNotSupportedException {
-		return (NeuralNetwork) super.clone();
+	public Object clone() {
+		return new NeuralNetwork(neurons, connections, layers, activeNeurons);
 	}
 }
