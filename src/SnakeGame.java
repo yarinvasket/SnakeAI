@@ -78,6 +78,18 @@ public class SnakeGame implements Game, Serializable {
 		}
 
 		output.add((float) Math.atan2(yDifference, xDifference));
+		int upDistance = 0;
+		if (latestDirection == Direction.DOWN) {
+			
+		} else if (latestDirection == Direction.LEFT) {
+			
+		}
+		else if (latestDirection == Direction.RIGHT) {
+			
+		}
+		else {
+			
+		}
 		return output;
 	}
 
@@ -236,7 +248,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 1;
+		return 2;
 	}
 
 	@Override
