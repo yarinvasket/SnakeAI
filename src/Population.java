@@ -39,14 +39,11 @@ public class Population implements Serializable {
 			scores[i] = testCreature(i);
 		sort(scores);
 
-		for (int i = 0; i < creatures.size() / 2; i++)
-			try {
-				int num = (int) (i * Math.random());
-				creatures.put(i + creatures.size() / 2, (NeuralNetwork) creatures.get(num).clone());
-				batches.put(i + creatures.size() / 2, (Batch) batches.get(num).clone());
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-			}
+		for (int i = 0; i < creatures.size() / 2; i++) {
+			int num = (int) (i * Math.random());
+			creatures.put(i + creatures.size() / 2, (NeuralNetwork) creatures.get(num).clone());
+			batches.put(i + creatures.size() / 2, (Batch) batches.get(num).clone());
+		}
 
 		for (int i = 0; i < creatures.size() / 2; i++) {
 			int idx = i + creatures.size() / 2;
@@ -105,17 +102,12 @@ public class Population implements Serializable {
 					float temp = arr[j];
 					arr[j] = arr[j + 1];
 					arr[j + 1] = temp;
-
-					try {
-						NeuralNetwork tmp = (NeuralNetwork) creatures.get(j).clone();
-						creatures.put(j, creatures.get(j + 1));
-						creatures.put(j + 1, tmp);
-						Batch tmpb = (Batch) batches.get(j).clone();
-						batches.put(j, batches.get(j + 1));
-						batches.put(j + 1, tmpb);
-					} catch (CloneNotSupportedException e) {
-						e.printStackTrace();
-					}
+					NeuralNetwork tmp = (NeuralNetwork) creatures.get(j).clone();
+					creatures.put(j, creatures.get(j + 1));
+					creatures.put(j + 1, tmp);
+					Batch tmpb = (Batch) batches.get(j).clone();
+					batches.put(j, batches.get(j + 1));
+					batches.put(j + 1, tmpb);
 				}
 				pivotIdx--;
 			}
