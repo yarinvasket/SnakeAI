@@ -77,7 +77,7 @@ public class SnakeGame implements Game, Serializable {
 			xDifference = yHead - yFood;
 		}
 
-		float firstNeuron = (float) Math.toDegrees(Math.atan2(yDifference, xDifference));
+		float firstNeuron = (float) Math.atan2(yDifference, xDifference);
 
 		output.add(firstNeuron);
 		System.out.println(firstNeuron);
