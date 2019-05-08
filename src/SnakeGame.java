@@ -77,9 +77,7 @@ public class SnakeGame implements Game, Serializable {
 			xDifference = yFood - yHead;
 		}
 
-		float firstNeuron = (float) Math.atan2(yDifference, xDifference);
-
-		output.add(firstNeuron);
+		output.add((float) Math.atan2(yDifference, xDifference));
 		return output;
 	}
 
