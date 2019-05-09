@@ -78,19 +78,28 @@ public class SnakeGame implements Game, Serializable {
 		}
 
 		output.add((float) Math.atan2(yDifference, xDifference));
-		int upDistance = 0;
+		int upDistance;
+		int rightDistance;
 		if (latestDirection == Direction.DOWN) {
-			
+
 		} else if (latestDirection == Direction.LEFT) {
-			
-		}
-		else if (latestDirection == Direction.RIGHT) {
-			
-		}
-		else {
-			
+
+		} else if (latestDirection == Direction.RIGHT) {
+
+		} else {
+
 		}
 		return output;
+	}
+
+	public int getUpDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int y = yHead + res;
+			if (board[y][xHead] == Block.SNAKE || board[y][xHead] == Block.WALL)
+				break;
+		}
+		return res;
 	}
 
 	@Override
