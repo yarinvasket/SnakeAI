@@ -104,6 +104,10 @@ public class SnakeGame implements Game, Serializable {
 			leftDistance = getLeftDistance();
 			downDistance = getDownDistance();
 		}
+		output.add((float) upDistance);
+		output.add((float) rightDistance);
+		output.add((float) leftDistance);
+		output.add((float) downDistance);
 		return output;
 	}
 
@@ -302,7 +306,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 1;
+		return 5;
 	}
 
 	@Override
