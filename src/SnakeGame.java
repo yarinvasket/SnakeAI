@@ -77,7 +77,6 @@ public class SnakeGame implements Game, Serializable {
 			xDifference = yFood - yHead;
 		}
 
-		System.out.println(Math.toDegrees(Math.atan2(yDifference, xDifference)));
 		output.add((float) Math.atan2(yDifference, xDifference));
 		int upDistance;
 		int rightDistance;
@@ -104,10 +103,10 @@ public class SnakeGame implements Game, Serializable {
 			leftDistance = getLeftDistance();
 			downDistance = getDownDistance();
 		}
-		output.add((float) upDistance);
-		output.add((float) rightDistance);
-		output.add((float) leftDistance);
-		output.add((float) downDistance);
+		output.add(1 / (float) upDistance);
+		output.add(1 / (float) rightDistance);
+		output.add(1 / (float) leftDistance);
+		output.add(1 / (float) downDistance);
 		return output;
 	}
 
