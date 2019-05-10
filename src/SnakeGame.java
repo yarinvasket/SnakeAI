@@ -95,8 +95,38 @@ public class SnakeGame implements Game, Serializable {
 	public int getUpDistance() {
 		int res = 1;
 		for (; true; res++) {
+			int y = yHead - res;
+			if (board[y][xHead] == Block.SNAKE || board[y][xHead] == Block.WALL)
+				break;
+		}
+		return res;
+	}
+	
+	public int getDownDistance() {
+		int res = 1;
+		for (; true; res++) {
 			int y = yHead + res;
 			if (board[y][xHead] == Block.SNAKE || board[y][xHead] == Block.WALL)
+				break;
+		}
+		return res;
+	}
+	
+	public int getRightDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead + res;
+			if (board[yHead][x] == Block.SNAKE || board[yHead][x] == Block.WALL)
+				break;
+		}
+		return res;
+	}
+	
+	public int getLeftDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead - res;
+			if (board[yHead][x] == Block.SNAKE || board[yHead][x] == Block.WALL)
 				break;
 		}
 		return res;
