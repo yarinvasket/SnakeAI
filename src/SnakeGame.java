@@ -77,17 +77,32 @@ public class SnakeGame implements Game, Serializable {
 			xDifference = yFood - yHead;
 		}
 
+		System.out.println(Math.toDegrees(Math.atan2(yDifference, xDifference)));
 		output.add((float) Math.atan2(yDifference, xDifference));
 		int upDistance;
 		int rightDistance;
+		int leftDistance;
+		int downDistance;
 		if (latestDirection == Direction.DOWN) {
-
+			upDistance = getDownDistance();
+			rightDistance = getLeftDistance();
+			leftDistance = getRightDistance();
+			downDistance = getUpDistance();
 		} else if (latestDirection == Direction.LEFT) {
-
+			upDistance = getLeftDistance();
+			rightDistance = getUpDistance();
+			leftDistance = getDownDistance();
+			downDistance = getRightDistance();
 		} else if (latestDirection == Direction.RIGHT) {
-
+			upDistance = getRightDistance();
+			rightDistance = getDownDistance();
+			leftDistance = getUpDistance();
+			downDistance = getLeftDistance();
 		} else {
-
+			upDistance = getUpDistance();
+			rightDistance = getRightDistance();
+			leftDistance = getLeftDistance();
+			downDistance = getDownDistance();
 		}
 		return output;
 	}
@@ -101,7 +116,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		return res;
 	}
-	
+
 	public int getDownDistance() {
 		int res = 1;
 		for (; true; res++) {
@@ -111,7 +126,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		return res;
 	}
-	
+
 	public int getRightDistance() {
 		int res = 1;
 		for (; true; res++) {
@@ -121,7 +136,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		return res;
 	}
-	
+
 	public int getLeftDistance() {
 		int res = 1;
 		for (; true; res++) {
