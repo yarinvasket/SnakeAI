@@ -10,6 +10,8 @@ public interface Game extends Cloneable {
 	public boolean isAlive();
 
 	public void tick();
+	
+	public void draw();
 
 	public int getInputAmount();
 
