@@ -280,7 +280,6 @@ public class SnakeGame implements Game, Serializable {
 
 		if (board[yHead][xHead] == Block.WALL || board[yHead][xHead] == Block.SNAKE || hunger <= 0) {
 			isAlive = false;
-			drawBoard();
 			return;
 		} else if (board[yHead][xHead] == Block.NA) {
 			board[yHead][xHead] = Block.SNAKE;
@@ -291,7 +290,6 @@ public class SnakeGame implements Game, Serializable {
 			hunger = 20;
 			generateFood();
 		}
-		drawBoard();
 	}
 
 	public void generateFood() {
@@ -313,7 +311,8 @@ public class SnakeGame implements Game, Serializable {
 		return 3;
 	}
 
-	public void drawBoard() {
+	@Override
+	public void draw() {
 		for (Block[] y : board) {
 			for (Block x : y)
 				if (x == Block.NA)
