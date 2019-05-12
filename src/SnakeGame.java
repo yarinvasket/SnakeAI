@@ -8,6 +8,7 @@ public class SnakeGame implements Game, Serializable {
 	private Block[][] board;
 	private Map<List<Integer>, Direction> directions;
 	private List<Float> input;
+	private List<String> frames;
 	private Direction latestDirection;
 	private int xHead, yHead, xTail, yTail, xFood, yFood;
 	private int score;
@@ -33,6 +34,7 @@ public class SnakeGame implements Game, Serializable {
 		yTail = yHead;
 		generateFood();
 		directions = new HashMap<List<Integer>, Direction>();
+		frames = new ArrayList<String>();
 		for (int x = 2; x <= 4; x++) {
 			board[yHead][x] = Block.SNAKE;
 			if (x < 4) {
@@ -280,6 +282,7 @@ public class SnakeGame implements Game, Serializable {
 
 		if (board[yHead][xHead] == Block.WALL || board[yHead][xHead] == Block.SNAKE || hunger <= 0) {
 			isAlive = false;
+			addFrame();
 			return;
 		} else if (board[yHead][xHead] == Block.NA) {
 			board[yHead][xHead] = Block.SNAKE;
@@ -290,6 +293,7 @@ public class SnakeGame implements Game, Serializable {
 			hunger = 20;
 			generateFood();
 		}
+		addFrame();
 	}
 
 	public void generateFood() {
@@ -311,20 +315,27 @@ public class SnakeGame implements Game, Serializable {
 		return 3;
 	}
 
-	@Override
-	public void draw() {
+	public void addFrame() {
+		String res = "";
 		for (Block[] y : board) {
 			for (Block x : y)
 				if (x == Block.NA)
-					System.out.print(" ");
+					res += " ";
 				else if (x == Block.WALL)
-					System.out.print("█");
+					res += "█";
 				else if (x == Block.SNAKE)
-					System.out.print("*");
+					res += "*";
 				else
-					System.out.print("&");
-			System.out.println();
+					res += "&";
+			res += "\n";
 		}
+		frames.add(res);
+	}
+	
+	@Override
+	public void draw() {
+		for (String s : frames)
+			System.out.println(s);
 	}
 
 	public Object clone() throws CloneNotSupportedException {
