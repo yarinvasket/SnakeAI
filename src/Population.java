@@ -7,12 +7,14 @@ public class Population implements Serializable {
 	private Map<Integer, NeuralNetwork> creatures;
 	private Map<Integer, Batch> batches;
 	private Game game;
+	private float bestScore;
 	private static final long serialVersionUID = 1L;
 
 	public Population(int popSize, Game game) {
 		creatures = new HashMap<Integer, NeuralNetwork>();
 		batches = new HashMap<Integer, Batch>();
 		this.game = game;
+		bestScore = 0;
 
 		for (int i = 0; i < popSize; i++) {
 			creatures.put(i, new NeuralNetwork(game.getInputAmount(), game.getOutputAmount()));
@@ -141,6 +143,10 @@ public class Population implements Serializable {
 			}
 			float score = gameCopy.getScore();
 			batches.get(creatureNo).addScore(score);
+			if (score > bestScore) {
+				gameCopy.draw();
+				bestScore = score;
+			}
 			return score;
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
