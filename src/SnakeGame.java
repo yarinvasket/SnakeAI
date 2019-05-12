@@ -331,7 +331,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		frames.add(res);
 	}
-	
+
 	@Override
 	public void draw() {
 		for (String s : frames)
