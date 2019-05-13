@@ -335,7 +335,7 @@ public class SnakeGame implements Game, Serializable {
 	@Override
 	public void draw() {
 		for (String s : frames)
-			System.out.println(s);
+			System.out.print(s);
 	}
 
 	public Object clone() throws CloneNotSupportedException {
