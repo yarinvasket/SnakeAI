@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 
 public class Main {
 
@@ -6,7 +7,7 @@ public class Main {
 		Population population;
 		try {
 			population = (Population) ObjectIO.readObjFromFile(filePath);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			Game snakeGame = new SnakeGame();
 			population = new Population(1000, snakeGame);
 		}
