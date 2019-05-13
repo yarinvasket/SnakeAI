@@ -11,8 +11,6 @@ public class Main {
 			Game snakeGame = new SnakeGame();
 			population = new Population(1000, snakeGame);
 		}
-		//else
-		//	population = new Population(1000, snakeGame);
 		while (true)
 			population.killMutate();
 	}
