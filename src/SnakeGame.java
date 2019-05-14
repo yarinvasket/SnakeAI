@@ -67,12 +67,12 @@ public class SnakeGame implements Game, Serializable {
 
 		if (latestDirection == Direction.UP) {
 			yDifference = yHead - yFood;
-			xDifference = xHead - xFood;
+			xDifference = xFood - xHead;
 		} else if (latestDirection == Direction.DOWN) {
 			yDifference = yFood - yHead;
-			xDifference = xFood - xHead;
+			xDifference = xHead - xFood;
 		} else if (latestDirection == Direction.LEFT) {
-			yDifference = xHead - xFood;
+			yDifference = xFood - xHead;
 			xDifference = yHead - yFood;
 		} else {
 			yDifference = xFood - xHead;
