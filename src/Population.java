@@ -8,13 +8,17 @@ public class Population implements Serializable {
 	private Map<Integer, Batch> batches;
 	private Game game;
 	private float bestScore;
+	private int layerCap;
+	private int neuronCap;
 	private static final long serialVersionUID = 1L;
 
-	public Population(int popSize, Game game) {
+	public Population(int popSize, Game game, int layerCap, int neuronCap) {
 		creatures = new HashMap<Integer, NeuralNetwork>();
 		batches = new HashMap<Integer, Batch>();
 		this.game = game;
 		bestScore = 0;
+		this.layerCap = layerCap;
+		this.neuronCap = neuronCap;
 
 		for (int i = 0; i < popSize; i++) {
 			creatures.put(i, new NeuralNetwork(game.getInputAmount(), game.getOutputAmount()));
@@ -64,7 +68,7 @@ public class Population implements Serializable {
 			}
 
 			float absDiff = Math.abs(latestScore) - Math.abs(beforeLatestScore);
-			if (absDiff <= latestScore / 50) {
+			if (absDiff <= latestScore / 50 && creatures.get(idx).getNeurons().size() < neuronCap) {
 				batches.get(idx).addBatch(creatures.get(idx).addConnectionMutation());
 				if (absDiff <= latestScore / 100) {
 					batches.get(idx).addBatch(creatures.get(idx).mutateConnections());
@@ -75,7 +79,7 @@ public class Population implements Serializable {
 					batches.get(idx).addBatch(creatures.get(idx)
 							.addOutConnectionMutation(creatures.get(idx).getNeurons().size() - 1, layerNum));
 
-					if (absDiff <= latestScore / 200) {
+					if (absDiff <= latestScore / 200 && creatures.get(idx).getLayers().size() < layerCap) {
 						creatures.get(idx).addLayer();
 						int layerNo = creatures.get(idx).getLayers().size() - 2;
 
