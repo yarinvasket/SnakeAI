@@ -10,7 +10,7 @@ public class Main {
 			population = (Population) ObjectIO.readObjFromFile(filePath);
 		} else {
 			Game snakeGame = new SnakeGame();
-			population = new Population(1000, snakeGame);
+			population = new Population(1000, snakeGame, 4, 75);
 		}
 		while (true)
 			population.killMutate();
