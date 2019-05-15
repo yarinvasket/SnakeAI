@@ -46,7 +46,7 @@ public class SnakeGame implements Game, Serializable {
 		}
 		latestDirection = Direction.RIGHT;
 		score = 3;
-		tailLast = 2;
+		tailLast = 1;
 		hunger = 20;
 		isAlive = true;
 	}
@@ -151,6 +151,28 @@ public class SnakeGame implements Game, Serializable {
 		}
 		return res;
 	}
+	
+	public int getUpRightDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead + res;
+			int y = yHead - res;
+			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
+				break;
+		}
+		return res;
+	}
+	
+	public int getUpLeftDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead + res;
+			int y = yHead - res;
+			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
+				break;
+		}
+		return res;
+	}
 
 	@Override
 	public float getScore() {
@@ -164,26 +186,6 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public void tick() {
-		if (tailLast <= 0) {
-			board[yTail][xTail] = Block.NA;
-			List<Integer> key = new ArrayList<Integer>();
-			key.add(yTail);
-			key.add(xTail);
-			Direction tailDirection = directions.get(key);
-			if (tailDirection == Direction.DOWN)
-				yTail++;
-			else if (tailDirection == Direction.LEFT)
-				xTail--;
-			else if (tailDirection == Direction.RIGHT)
-				xTail++;
-			else
-				yTail--;
-			directions.put(key, null);
-		} else {
-			tailLast--;
-			score++;
-		}
-
 		int maxIdx = 0;
 		for (int i = 1; i < input.size(); i++)
 			if (input.get(i) > input.get(maxIdx))
@@ -278,6 +280,26 @@ public class SnakeGame implements Game, Serializable {
 				yHead--;
 			}
 			break;
+		}
+
+		if (tailLast <= 0) {
+			board[yTail][xTail] = Block.NA;
+			List<Integer> key = new ArrayList<Integer>();
+			key.add(yTail);
+			key.add(xTail);
+			Direction tailDirection = directions.get(key);
+			if (tailDirection == Direction.DOWN)
+				yTail++;
+			else if (tailDirection == Direction.LEFT)
+				xTail--;
+			else if (tailDirection == Direction.RIGHT)
+				xTail++;
+			else
+				yTail--;
+			directions.put(key, null);
+		} else {
+			tailLast--;
+			score++;
 		}
 
 		if (board[yHead][xHead] == Block.WALL || board[yHead][xHead] == Block.SNAKE || hunger <= 0) {
