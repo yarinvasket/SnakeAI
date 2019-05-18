@@ -84,6 +84,10 @@ public class SnakeGame implements Game, Serializable {
 		int rightDistance;
 		int leftDistance;
 		int downDistance;
+		int upRightDistance;
+		int upLeftDistance;
+		int downRightDistance;
+		int downLeftDistance;
 		if (latestDirection == Direction.DOWN) {
 			upDistance = getDownDistance();
 			rightDistance = getLeftDistance();
