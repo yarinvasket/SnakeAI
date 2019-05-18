@@ -93,26 +93,46 @@ public class SnakeGame implements Game, Serializable {
 			rightDistance = getLeftDistance();
 			leftDistance = getRightDistance();
 			downDistance = getUpDistance();
+			upRightDistance = getDownLeftDistance();
+			upLeftDistance = getDownRightDistance();
+			downRightDistance = getUpLeftDistance();
+			downLeftDistance = getUpRightDistance();
 		} else if (latestDirection == Direction.LEFT) {
 			upDistance = getLeftDistance();
 			rightDistance = getUpDistance();
 			leftDistance = getDownDistance();
 			downDistance = getRightDistance();
+			upRightDistance = getUpLeftDistance();
+			upLeftDistance = getDownLeftDistance();
+			downRightDistance = getUpRightDistance();
+			downLeftDistance = getDownRightDistance();
 		} else if (latestDirection == Direction.RIGHT) {
 			upDistance = getRightDistance();
 			rightDistance = getDownDistance();
 			leftDistance = getUpDistance();
 			downDistance = getLeftDistance();
+			upRightDistance = getDownRightDistance();
+			upLeftDistance = getUpRightDistance();
+			downRightDistance = getDownLeftDistance();
+			downLeftDistance = getUpLeftDistance();
 		} else {
 			upDistance = getUpDistance();
 			rightDistance = getRightDistance();
 			leftDistance = getLeftDistance();
 			downDistance = getDownDistance();
+			upRightDistance = getUpRightDistance();
+			upLeftDistance = getUpLeftDistance();
+			downRightDistance = getDownRightDistance();
+			downLeftDistance = getDownLeftDistance();
 		}
 		output.add(1 / (float) upDistance);
 		output.add(1 / (float) rightDistance);
 		output.add(1 / (float) leftDistance);
 		output.add(1 / (float) downDistance);
+		output.add(1 / (float) upRightDistance);
+		output.add(1 / (float) upLeftDistance);
+		output.add(1 / (float) downRightDistance);
+		output.add(1 / (float) downLeftDistance);
 		return output;
 	}
 
@@ -355,7 +375,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 5;
+		return 9;
 	}
 
 	@Override
