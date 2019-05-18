@@ -173,6 +173,28 @@ public class SnakeGame implements Game, Serializable {
 		}
 		return res;
 	}
+	
+	public int getDownRightDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead + res;
+			int y = yHead + res;
+			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
+				break;
+		}
+		return res;
+	}
+	
+	public int getDownLeftDistance() {
+		int res = 1;
+		for (; true; res++) {
+			int x = xHead - res;
+			int y = yHead + res;
+			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
+				break;
+		}
+		return res;
+	}
 
 	@Override
 	public float getScore() {
