@@ -141,7 +141,13 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public int getDownDistance() {
-		return 1;
+		int res = 1;
+		for (; true; res++) {
+			int y = yHead + res;
+			if (board[y][xHead] == Block.SNAKE || board[y][xHead] == Block.WALL)
+				break;
+		}
+		return res;
 	}
 
 	public int getRightDistance() {
