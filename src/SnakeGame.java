@@ -83,7 +83,6 @@ public class SnakeGame implements Game, Serializable {
 		int upDistance;
 		int rightDistance;
 		int leftDistance;
-		int downDistance;
 		int upRightDistance;
 		int upLeftDistance;
 		int downRightDistance;
@@ -92,7 +91,6 @@ public class SnakeGame implements Game, Serializable {
 			upDistance = getDownDistance();
 			rightDistance = getLeftDistance();
 			leftDistance = getRightDistance();
-			downDistance = getUpDistance();
 			upRightDistance = getDownLeftDistance();
 			upLeftDistance = getDownRightDistance();
 			downRightDistance = getUpLeftDistance();
@@ -101,7 +99,6 @@ public class SnakeGame implements Game, Serializable {
 			upDistance = getLeftDistance();
 			rightDistance = getUpDistance();
 			leftDistance = getDownDistance();
-			downDistance = getRightDistance();
 			upRightDistance = getUpLeftDistance();
 			upLeftDistance = getDownLeftDistance();
 			downRightDistance = getUpRightDistance();
@@ -110,7 +107,6 @@ public class SnakeGame implements Game, Serializable {
 			upDistance = getRightDistance();
 			rightDistance = getDownDistance();
 			leftDistance = getUpDistance();
-			downDistance = getLeftDistance();
 			upRightDistance = getDownRightDistance();
 			upLeftDistance = getUpRightDistance();
 			downRightDistance = getDownLeftDistance();
@@ -119,7 +115,6 @@ public class SnakeGame implements Game, Serializable {
 			upDistance = getUpDistance();
 			rightDistance = getRightDistance();
 			leftDistance = getLeftDistance();
-			downDistance = getDownDistance();
 			upRightDistance = getUpRightDistance();
 			upLeftDistance = getUpLeftDistance();
 			downRightDistance = getDownRightDistance();
@@ -128,7 +123,6 @@ public class SnakeGame implements Game, Serializable {
 		output.add(1 / (float) upDistance);
 		output.add(1 / (float) rightDistance);
 		output.add(1 / (float) leftDistance);
-		output.add(1 / (float) downDistance);
 		output.add(1 / (float) upRightDistance);
 		output.add(1 / (float) upLeftDistance);
 		output.add(1 / (float) downRightDistance);
@@ -147,13 +141,7 @@ public class SnakeGame implements Game, Serializable {
 	}
 
 	public int getDownDistance() {
-		int res = 1;
-		for (; true; res++) {
-			int y = yHead + res;
-			if (board[y][xHead] == Block.SNAKE || board[y][xHead] == Block.WALL)
-				break;
-		}
-		return res;
+		return 1;
 	}
 
 	public int getRightDistance() {
@@ -375,7 +363,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 9;
+		return 8;
 	}
 
 	@Override
