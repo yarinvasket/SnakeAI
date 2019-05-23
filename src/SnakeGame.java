@@ -83,50 +83,26 @@ public class SnakeGame implements Game, Serializable {
 		int upDistance;
 		int rightDistance;
 		int leftDistance;
-		int upRightDistance;
-		int upLeftDistance;
-		int downRightDistance;
-		int downLeftDistance;
 		if (latestDirection == Direction.DOWN) {
 			upDistance = getDownDistance();
 			rightDistance = getLeftDistance();
 			leftDistance = getRightDistance();
-			upRightDistance = getDownLeftDistance();
-			upLeftDistance = getDownRightDistance();
-			downRightDistance = getUpLeftDistance();
-			downLeftDistance = getUpRightDistance();
 		} else if (latestDirection == Direction.LEFT) {
 			upDistance = getLeftDistance();
 			rightDistance = getUpDistance();
 			leftDistance = getDownDistance();
-			upRightDistance = getUpLeftDistance();
-			upLeftDistance = getDownLeftDistance();
-			downRightDistance = getUpRightDistance();
-			downLeftDistance = getDownRightDistance();
 		} else if (latestDirection == Direction.RIGHT) {
 			upDistance = getRightDistance();
 			rightDistance = getDownDistance();
 			leftDistance = getUpDistance();
-			upRightDistance = getDownRightDistance();
-			upLeftDistance = getUpRightDistance();
-			downRightDistance = getDownLeftDistance();
-			downLeftDistance = getUpLeftDistance();
 		} else {
 			upDistance = getUpDistance();
 			rightDistance = getRightDistance();
 			leftDistance = getLeftDistance();
-			upRightDistance = getUpRightDistance();
-			upLeftDistance = getUpLeftDistance();
-			downRightDistance = getDownRightDistance();
-			downLeftDistance = getDownLeftDistance();
 		}
 		output.add(1 / (float) upDistance);
 		output.add(1 / (float) rightDistance);
 		output.add(1 / (float) leftDistance);
-		output.add(1 / (float) upRightDistance);
-		output.add(1 / (float) upLeftDistance);
-		output.add(1 / (float) downRightDistance);
-		output.add(1 / (float) downLeftDistance);
 		return output;
 	}
 
@@ -165,50 +141,6 @@ public class SnakeGame implements Game, Serializable {
 		for (; true; res++) {
 			int x = xHead - res;
 			if (board[yHead][x] == Block.SNAKE || board[yHead][x] == Block.WALL)
-				break;
-		}
-		return res;
-	}
-	
-	public int getUpRightDistance() {
-		int res = 1;
-		for (; true; res++) {
-			int x = xHead + res;
-			int y = yHead - res;
-			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
-				break;
-		}
-		return res;
-	}
-	
-	public int getUpLeftDistance() {
-		int res = 1;
-		for (; true; res++) {
-			int x = xHead + res;
-			int y = yHead - res;
-			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
-				break;
-		}
-		return res;
-	}
-	
-	public int getDownRightDistance() {
-		int res = 1;
-		for (; true; res++) {
-			int x = xHead + res;
-			int y = yHead + res;
-			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
-				break;
-		}
-		return res;
-	}
-	
-	public int getDownLeftDistance() {
-		int res = 1;
-		for (; true; res++) {
-			int x = xHead - res;
-			int y = yHead + res;
-			if (board[y][x] == Block.SNAKE || board[y][x] == Block.WALL)
 				break;
 		}
 		return res;
@@ -369,7 +301,8 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		return 8;
+		// return 8;
+		return 4;
 	}
 
 	@Override
