@@ -149,7 +149,6 @@ public class Population implements Serializable {
 			batches.get(creatureNo).addScore(score);
 			if (score > bestScore) {
 				gameCopy.draw();
-				System.out.println(gameCopy.getScore());
 				bestScore = score;
 			}
 			return score;
