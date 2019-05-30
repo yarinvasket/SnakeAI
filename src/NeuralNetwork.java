@@ -136,7 +136,12 @@ public class NeuralNetwork implements Serializable {
 
 	public Batch mutateConnections() {
 		Batch res = new Batch();
-		for (List<Integer> key : connections.keySet()) {
+		int mutations = connections.size() / 100;
+		if (mutations == 0)
+			mutations = 1;
+		for (int i = 0; i < mutations; i++) {
+			List<List<Integer>> keys = new ArrayList<List<Integer>>(connections.keySet());
+			List<Integer> key = keys.get((int) (Math.random() * keys.size()));
 			float value = (float) Math.random() * 2 - 1;
 			nudgeConnection(key, value);
 			res.addConnection(key, connections.get(key) + value);
