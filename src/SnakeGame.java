@@ -78,8 +78,8 @@ public class SnakeGame implements Game, Serializable {
 			yDifference = xFood - xHead;
 			xDifference = yFood - yHead;
 		}
-
 		output.add((float) Math.atan2(yDifference, xDifference));
+		
 		int upDistance;
 		int rightDistance;
 		int leftDistance;
