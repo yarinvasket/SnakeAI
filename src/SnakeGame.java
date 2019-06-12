@@ -78,7 +78,9 @@ public class SnakeGame implements Game, Serializable {
 			yDifference = xFood - xHead;
 			xDifference = yFood - yHead;
 		}
-		output.add((float) Math.atan2(yDifference, xDifference));
+		output.add((1 / (float) yDifference));
+		output.add((1 / (float) xDifference));
+		//output.add((float) Math.atan2(yDifference, xDifference));
 		
 		int upDistance;
 		int rightDistance;
@@ -301,8 +303,7 @@ public class SnakeGame implements Game, Serializable {
 
 	@Override
 	public int getInputAmount() {
-		// return 8;
-		return 4;
+		return 5;
 	}
 
 	@Override
